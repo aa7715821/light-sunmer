@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="login" style="display: none;">
+        你好，<span>张三</span>欢迎光临本商城！
+        <a href="javascript:;">退出</a>
+    </div>
+    <div class="admin">
+        <a href="2.login.html">请登录</a>
+        <a href="3.registry.html">请注册</a>
+    </div>
+</body>
+<script>
+    const login = document.querySelector('.login');
+    const admin = document.querySelector('.admin');
+    const span = document.querySelector('.login span');
+    const close = document.querySelector('.login a');
+    if (localStorage.getItem('user')) {
+        login.style.display = 'block';
+        admin.style.display = 'none';
+        span.innerHTML = localStorage.getItem('user');
+    }
+    // 
+    // 当点击退出的时候,退出商城
+    close.onclick = function() {
+        localStorage.removeItem('user');
+        login.style.display = 'none';
+        admin.style.display = 'block';
+    }
+</script>
+
+</html>
